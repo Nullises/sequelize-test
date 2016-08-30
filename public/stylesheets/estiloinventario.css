@@ -1,0 +1,169 @@
+@media (max-width: @screen-xs-max) { ... }
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) { ... }
+@media (min-width: @screen-md-min) and (max-width: @screen-md-max) { ... }
+@font-face{
+  font-family: 'Open Sans';
+  src: url(../assets/fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+.col-xs-12{
+padding-left: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+}
+body{
+background: #ECF0F1;
+}
+form{
+display: block;
+margin-top: 0em;
+}
+#searchForm{
+position: absolute;
+top: 12%;
+}
+.container{
+height: 100%;
+display: table;
+width: 100%;
+padding-right: 0;
+padding-left: 0;
+    }
+.centering {
+float: none;
+margin: 0 auto;
+    }
+.item{
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+}
+.panel-body{
+font-family: 'Open Sans', sans-serif;;
+src: url(../assets/fonts/Open_Sans/OpenSans-Regular.ttf);
+color: #ECF0F1;
+font-size: 12pt;
+text-shadow: #000000 -1px -2px 1em;
+}
+.panel-heading{
+font-family: 'Open Sans', sans-serif;
+src: url(../assets/fonts/Open_Sans/OpenSans-Regular.ttf);
+color: #ECF0F1;
+border-radius: 10pt;
+}
+.navbar{
+background: #ECF0F1;
+font-family: 'Open Sans', sans-serif;
+src: url(../assets/fonts/Open_Sans/OpenSans-Regular.ttf);
+font-size: 12pt;
+}
+.page-header{
+font-family: 'Open Sans', sans-serif;
+src: url(../assets/fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+.thumbnail{
+padding:15px;
+}
+#unesr{
+max-height: 140px;
+max-width: 140px;
+}
+.img-rounded{
+box-shadow: 0 0 25px rgba(0,0,0,0.8);
+}
+#scrolltop{
+font-size: 48px;
+opacity: 0.6;
+filter:  alpha(opacity=60);
+}
+#unesrnavbar{
+height: 48px;
+width: 48px;
+}
+.navbar-brand{
+padding: 1%;
+}
+#mensajeaviso{
+  font-size: 18pt;
+}
+
+/*SOCIAL MEDIA BOTONES*/
+#facebook{
+  height: 84px;
+  width: 84px;
+  border-radius: 100pt;
+  opacity: 1;
+  -webkit-transition: all 1s ease;
+	   -moz-transition: all 1s ease;
+	     -o-transition: all 1s ease;
+	        transition: all 1s ease;
+}
+
+#facebook:hover{
+  opacity: 0.60;
+  box-shadow: inset 0 0 0 5px  #3b5998;
+  -webkit-transition: all 1.25s ease;
+       -moz-transition: all 1.25s ease;
+         -o-transition: all 1.25s ease;
+            transition: all 1.25s ease;
+}
+
+#twitter{
+  height: 84px;
+  width: 84px;
+  border-radius: 100pt;
+  opacity: 1;
+  -webkit-transition: all 1s ease;
+	   -moz-transition: all 1s ease;
+	     -o-transition: all 1s ease;
+	        transition: all 1s ease;
+}
+
+#twitter:hover{
+  opacity: 0.60;
+  box-shadow: inset 0 0 0 5px #0084b4;
+  -webkit-transition: all 1.25s ease;
+       -moz-transition: all 1.25s ease;
+         -o-transition: all 1.25s ease;
+            transition: all 1.25s ease;
+}
+
+#linkedin{
+  height: 84px;
+  width: 84px;
+  border-radius: 100pt;
+  opacity: 1;
+  -webkit-transition: all 1s ease;
+	   -moz-transition: all 1s ease;
+	     -o-transition: all 1s ease;
+	        transition: all 1s ease;
+}
+
+#linkedin:hover{
+  opacity: 0.60;
+    box-shadow: inset 0 0 0 5px  #0077b5;
+    -webkit-transition: all 1.25s ease;
+       -moz-transition: all 1.25s ease;
+         -o-transition: all 1.25s ease;
+            transition: all 1.25s ease;
+}
+
+.fa-facebook{
+   color: #3b5998;
+}
+
+.fa-twitter{
+  color: #0084b4;
+}
+
+.fa-linkedin{
+  color: #0077b5;
+}
+
+/*PARSLEY*/
+.parsleyBlock{
+  font-size: 10pt;
+  color: red;
+  text-shadow: #fff -1px -2px 1em;
+}
