@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,13 +7,14 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico" />
     <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/sweetalert.css">
-    <link rel="stylesheet" href="stylesheets/estiloinventario.css">
+    <link rel="stylesheet" href="stylesheets/estiloinventario_inventario.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome-4.6.1/css/font-awesome.min.css">
+    <script src="assets/javascripts/multiplicar.js"></script>
 </head>
-<body data-spy="scroll" data-target="#navegacion">
+<body>
 <!--BARRA DE NAVEGACIÓN-->
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navegacion" aria-expanded="false">
@@ -24,159 +25,86 @@
                 </button>
                 <a href="#" class="navbar-brand"><img src="assets/images/LOGO-UNESR.png" alt="logo" id="unesrnavbar"></a>
             </div>
-            <div class="collapse navbar-collapse" id="navegacion">
-                <ul class="nav navbar-nav" role="navigation">
-                    <li><a href="#carrusel">REGISTRO</a></li>
-                    <li><a href="#contacto" class="hidden-xs hidden-sm">CONTACTO</a></li>
-                </ul>
-                <form action="/inventario" method="POST" class="navbar-form navbar-right">
-				          <div class="form-group">
-				            <label for="acceder">¡Ingresa!</label>
-					          <input type="email" class="form-control" name="correo_l" id="correo_l" placeholder="Correo Electrónico" required>
-				          </div>
-				          <div class="form-group">
-				            <input type="password" class="form-control" name="contrasena_l" id="contrasena_l" placeholder="Contraseña" required>
-				          </div>
-				          <button type="submit" name="login" class="btn btn-primary">
-					          <span>INGRESAR</span>
-				          </button>
-			          </form>
-            </div>
         </div>
     </nav>
 </header>
-<!--CARRUSEL-->
-<div class="row">
-  <div class="col-xs-12">
-       <div id="carrusel" class="carousel slide" data-ride="carousel" data-interval="2000">
-        <!--deslizador-->
-        <div class="carousel-inner" role="listbox">
-            <!--imagen1-->
-            <div class="item active">
-                <img src="assets/images/tech.jpg" alt="tecnología">
+
+<!--CUERPO-->
+<div class="row" ng-app="postgreSQL">
+  <div class="container" style="margin-top:20px;"  ng-controller="postgreSQLCtrl">
+            <div class="row clearfix">
+                <div class="col-md-12 column">
+                    <div class="jumbotron text-center">
+                        <h2>
+                            CRUD BÁSICO POSTGRESQL EN NODE.JS
+                        </h2>
+                    </div>
+                </div>
             </div>
-            <!--imagen 2-->
-            <div class="item">
-                <img src="assets/images/design.jpg" alt="diseño">
+            <div class="row clearfix" style="margin-bottom:10px;">
+                <div class="controls form-inline form-group">
+                    <div class="col-md-2">
+                        <input id="fName" name="fName"  placeholder="Nombre" ng-model="fName"
+                               type="text" class="form-control input-small">
+                    </div>
+                    <div class="col-md-2">
+                        <input id="lName" name="lName"  placeholder="Apellido" ng-model="lName"
+                               type="text" class="form-control input-small">
+                    </div>
+                    <div class="col-md-2">
+                        <input id="Email" name="Email"  placeholder="Email" ng-model="email"
+                               type="text" class="form-control input-small">
+                    </div>
+                    <div class="col-md-2">
+                        <input id="mobile" name="mobile"  placeholder="Celular" ng-model="mbl"
+                               type="text" class="form-control input-small">
+                    </div>
+                    <div class="col-md-2">
+                        <button ng-click="addRecord()" id="btnAdd" name="btnAdd" class="btn btn-danger">Añadir</button>
+                    </div>
+                </div>
             </div>
-            <!--imagen3-->
-            <div class="item">
-                <img src="assets/images/lan.jpg" alt="lan">
+            <div class="row clearfix">
+                <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>  Id  </th>
+                            <th> Nombre </th>
+                            <th> Apellido </th>
+                            <th>  Email </th>
+                            <th>  Celular </th>
+                            <th>   </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in dataset">
+                            <td> {{item.id}} </td>
+                            <td> {{item.firstname}} </td>
+                            <td> {{item.lastname}} </td>
+                            <td> {{item.email}} </td>
+                            <td> {{item.mobile}} </td>
+                            <td> <span title="delete this record" class="glyphicon glyphicon-trash text-danger" style="cursor:pointer" ng-click="delRecord(item.id)"></span> </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-  </div>
 </div>
-<!--FORMULARIO-->
-<div class="container" id="searchForm">
-    <div class="col-sm-6 col-sm-offset-3" id="contenedor">
-        <form method="POST" action="/" id="formulario_registro">
-    <!--PANEL-->
-    <div class="panel-primary centering">
-        <!--Encabezado del panel-->
-        <div class="panel-heading">
-            <div class="panel-title text-center">
-                <img src="assets/images/LOGO-UNESR.png" alt="unesr" class="img-responsive centering" id="unesr">
-                <h3>SISTEMA DE INVENTARIO DE LA UNESR</h3>
-            </div>
-        </div>
-        <!--Cuerpo del panel-->
-        <div class="panel-body text-center">
-            <!--Username-->
-            <div class="form-group">
-                <label for="nombre">Nombre de usuario</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduce un nombre de usuario" required pattern="^\w{6,32}$" data-parsley-required-message="Obligatorio" data-parsley-pattern-message="Ingrese solo letras o números (Mínimo 6 caracteres)" data-parsley-trigger="change" >
-            </div>
-            <!--Correo-->
-            <div class="form-group">
-                <label for="correo">E-mail</label>
-                <input type="email" class="form-control" name="correo" id="correo" placeholder="Introduce tu dirección de correo electrónico" required type="email" data-parsley-required-message="Obligatorio" data-parsley-trigger="change" data-parsley-type-message="Debe ser un email válido">
-            </div>
-            <!--Contraseña-->
-            <div class="form-group">
-                <label for="contrasena">Contraseña</label>
-                <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Introduce una contraseña" required  minlength="6" data-parsley-required-message="Obligatorio" data-parsley-minlength-message="Mínimo 6 caracteres" data-parsley-trigger="change">
-            </div>
-            <!--Confirmación de Contraseña-->
-            <div class="form-group">
-                <label for="contrasena2">Confirmar contraseña</label>
-                <input type="password" class="form-control" name="contrasena2" id="contrasena2" placeholder="Confirma la contraseña" required  minlength="6" data-parsley-equalto="#contrasena" data-parsley-required-message="Obligatorio" data-parsley-minlength-message="Mínimo 6 caracteres" data-parsley-equalto-message="Ambas contraseñas deben coincidir" data-parsley-trigger="change">
-            </div>
-        </div>
-        <!--Final del panel-->
-        <div class="panel-footer-inverse text-center">
-            <button type="submit" name="registrar" class="btn btn-primary">Enviar</button>
-            <button type="reset" class="btn btn-danger">Borrar</button>
-        </div>
-    </div>
-    </form>
-    </div>
-</div>
-<!--CONTACTO-->
-<div class="page-header text-center hidden-xs hidden-sm" id="contacto">
-    <h2>CONTACTO</h2>
-</div>
-<div class="row">
-    <!--ULISES-->
-    <div class="col-md-6 col-md-offset-3 hidden-xs hidden-sm">
-        <div class="thumbnail">
-            <img src="assets/images/thumb_ulises.jpg" class="img-circle" alt="Ulises">
-            <div class="caption text-justify">
-                <blockquote>
-                    <p><cite>"Ética y disciplina"</cite></p>
-                    <footer>Ulises Vargas</footer>
-                </blockquote>
-                <p class="text-center">DESARROLLADOR WEB FRONTEND</p>
-                <p class="text-center">Caracas-Venezuela</p>
-                <div class="text-center">
-                <p class="text-center">¡Sígueme en mis redes sociales!</p><br>
-                  <!--CONTENEDOR BOTONES-->
-                  <div class="row text-center">
-                  <!--BOTONES-->
-                  <div class="col-md-4 hidden-xs hidden-sm">
-                    <a href="https://www.facebook.com/nico.rou.37" class="btn btn-default btn-lg" id="facebook"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 48pt"></i></a>
-                  </div>
-                  <div class="col-md-4 hidden-xs hidden-sm">
-                    <a href="https://twitter.com/texanico" class="btn btn-default btn-lg" id="twitter"><i class="fa fa-twitter" aria-hidden="true" style="font-size: 48pt"></i></a>
-                  </div>
-                  <div class="col-md-4 hidden-xs hidden-sm">
-                    <a href="https://ve.linkedin.com/in/ulises-vargas-de-sousa-b9b352117" class="btn btn-default btn-lg" id="linkedin"><i class="fa fa-linkedin" aria-hidden="true" style="font-size: 48pt"></i></a>
-                  </div>
-                  </div><br>
-                <!--BOTONES-->
-        </div>
-        <div class="text-center">
-        <!--BOTON IR ARRIBA-->
-        <a href="#carrusel" role="button"><span class="glyphicon glyphicon-chevron-up text-center hidden-xs hidden-sm" aria-hidden="true" id="scrolltop"></span></a>
-        </div>
-    </div>
+
+<!--FOOTER-->
+  <footer>
+          <nav class="navbar navbar-default navbar-fixed-bottom">
+             <div class="container-fluid">
+                 <p class="text-center">OPERACIONES CRUD BÁSICAS POSTGRESQL + NODE.JS</p>
+             </div>
+          </nav>
+  </footer>
 </div>
 <!--SCRIPTS-->
 <script src="assets/javascripts/jquery-2.2.2.min.js"></script>
 <script src="assets/javascripts/bootstrap.min.js"></script>
 <script src="assets/javascripts/sweetalert.min.js"></script>
-<script src="assets/javascripts/parsley.min.js"></script>
-<!--BOTON ARRIBA SCRIPT-->
-<script src="assets/javascripts/ir_arriba.js"></script>
-<!--PARSLEY PARA LAS ENTRADAS-->
-<script>
-  $(document).ready(function(){
-    var parsleyOptions = {
-     errorClass: 'has-error',
-     successClass: 'has-success',
-     classHandler: function(ParsleyField) {
-         return ParsleyField.$element.parents('.form-group');
-     },
-     errorsContainer: function(ParsleyField) {
-         return ParsleyField.$element.parents('.form-group');
-     },
-     errorsWrapper: '<span class="parsleyBlock">',
-     errorTemplate: '<div></div>'
-  };
-
-  $('#formulario_registro').parsley( parsleyOptions );
-
-  });
-</script>
+<script src="assets/javascripts/angular.min.js"></script>
+<script src="assets/javascripts/module.js"></script>
 </body>
 </html>

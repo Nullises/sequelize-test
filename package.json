@@ -15,14 +15,14 @@
     "dotenv": "~1.2.0",
     "ejs": "~2.1.4",
     "express": "~4.11.0",
+    "express-myconnection": "^1.0.4",
     "jquery": "^3.1.0",
     "morgan": "~1.5.1",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
     "request": "~2.0.0",
-    "sequelize": "^3.12.2",
-    "sequelize-cli": "^2.1.0",
-    "serve-favicon": "~2.2.0"
+    "http": "~0.0.0",
+    "logfmt": "*"
   },
   "keywords": [
     "sequelize",

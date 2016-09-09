@@ -1,10 +1,13 @@
 //Dependencias:
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var dbOperations = require("./dbOperations.js");
+var logFmt = require('logfmt');
 
 //Definir puerto:
 var server_port = process.env.PORT || 3000;
@@ -29,6 +32,24 @@ app.use(express.static(__dirname + '/node_modules'));
 //Inicializar la aplicación:
 init();
 
+
+//Operaciones CRUD
+app.get('/db/readRecords', function(req,res){
+    dbOperations.getRecords(req,res);
+});
+app.get('/db/addRecord', function(req,res){
+    dbOperations.addRecord(req,res);
+});
+app.get('/db/delRecord', function(req,res){
+    dbOperations.delRecord(req,res);
+});
+app.get('/db/createTable', function(req,res){
+    dbOperations.createTable(req,res);
+});
+app.get('/db/dropTable', function(req,res){
+    dbOperations.dropTable(req,res);
+});
+
 //Páginas:
 //Inicio
 app.get('/', function(req, res){
@@ -36,23 +57,9 @@ app.get('/', function(req, res){
 });
 
 app.get('/index', function(req, res){
-    res.render('index', { });
-});
 
-
-//Inventario
-app.get('/inventario', function(req, res){
-    res.render('inventario', { });
-});
-
-//POST (LOGIN):
-app.post('/inventario', function(req, res){
-  res.render('inventario', { });
-});
-
-//POST (SIGN_IN):
-app.post('/', function(req, res){
   res.render('index', { });
+
 });
 
 //Manejo de errores:
