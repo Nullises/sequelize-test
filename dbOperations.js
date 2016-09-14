@@ -2,7 +2,7 @@ module.exports = {
   getRecords: function(req, res) {
         var pg = require('pg');
         //You can run command "heroku config" to see what is Database URL from Heroku belt
-        var conString = process.env.DATABASE_URL || "postgres://postgres:123456uv@localhost:5432/registro";
+        var conString = process.env.DATABASE_URL || "postgres://ingeolan:ingeolan01@192.168.1.197:5432/registro";
         var client = new pg.Client(conString);
         client.connect();
         var query = client.query("select * from employee");
@@ -18,7 +18,7 @@ module.exports = {
   },
     addRecord : function(req, res){
         var pg = require('pg');
-        var conString = process.env.DATABASE_URL ||  "postgres://postgres:123456uv@localhost:5432/registro";
+        var conString = process.env.DATABASE_URL ||  "postgres://ingeolan:ingeolan01@192.168.1.197:5432/registro";
         var client = new pg.Client(conString);
         client.connect();
         var query = client.query("insert into employee (firstName,lastName,email,mobile) "+
@@ -32,7 +32,7 @@ module.exports = {
     },
      delRecord : function(req, res){
         var pg = require('pg');
-        var conString = process.env.DATABASE_URL ||  "postgres://postgres:123456uv@localhost:5432/registro";
+        var conString = process.env.DATABASE_URL ||  "postgres://ingeolan:ingeolan01@192.168.1.197:5432/registro";
         var client = new pg.Client(conString);
         client.connect();
         var query = client.query( "Delete from employee Where id ="+req.query.id);
@@ -44,7 +44,7 @@ module.exports = {
     },
     createTable : function(req, res){
         var pg = require('pg');
-        var conString = process.env.DATABASE_URL ||  "postgres://postgres:123456uv@localhost:5432/registro";
+        var conString = process.env.DATABASE_URL ||  "postgres://ingeolan:ingeolan01@192.168.1.197:5432/registro";
         var client = new pg.Client(conString);
         client.connect();
         var query = client.query( "CREATE TABLE employee"+
@@ -63,7 +63,7 @@ module.exports = {
     },
     dropTable : function(req, res){
         var pg = require('pg');
-        var conString = process.env.DATABASE_URL || "postgres://postgres:123456uv@localhost:5432/registro";
+        var conString = process.env.DATABASE_URL || "postgres://ingeolan:ingeolan01@192.168.1.197:5432/registro";
         var client = new pg.Client(conString);
         client.connect();
         var query = client.query( "Drop TABLE employee");

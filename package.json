@@ -16,13 +16,14 @@
     "ejs": "~2.1.4",
     "express": "~4.11.0",
     "express-myconnection": "^1.0.4",
+    "http": "~0.0.0",
     "jquery": "^3.1.0",
-    "morgan": "~1.5.1",
+    "logfmt": "*",
+    "morgan": "^1.5.3",
     "pg": "^4.4.3",
     "pg-hstore": "^2.3.2",
     "request": "~2.0.0",
-    "http": "~0.0.0",
-    "logfmt": "*"
+    "serve-favicon": "^2.3.0"
   },
   "keywords": [
     "sequelize",

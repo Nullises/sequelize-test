@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var dbOperations = require("./dbOperations.js");
 var logFmt = require('logfmt');
+var morgan = require('morgan');
 
 //Definir puerto:
 var server_port = process.env.PORT || 3000;
@@ -19,7 +20,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //Definir middlewares:
-app.use(logger('dev'));
+/*app.use(logger('dev'));*/
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
