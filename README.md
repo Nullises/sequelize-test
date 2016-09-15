@@ -9,8 +9,10 @@
 
 ## Instalación de Base de Datos  
 
--Tener instalado Postgres versión 9.5
+-Tener instalado Postgres versión 9.5 o superior
+
 -Crear base de datos vacía llamada "registro"
+
 -Clic derecho, "Restore", apuntar a la carpeta backup
 
 ## Configuración de Base de Datos
