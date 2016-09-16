@@ -8,8 +8,8 @@ var bodyParser = require('body-parser');
 //var dbOperations = require("./dbOperations.js");
 var logFmt = require('logfmt');
 var morgan = require('morgan');
+var routes = require('./routes/index.js');
 
-var operations = require('./crud/operations');
 
 //Definir puerto:
 var server_port = process.env.PORT || 3000;
@@ -23,8 +23,6 @@ app.set('view engine', 'ejs');
 
 //Definir middlewares:
 /*app.use(logger('dev'));*/
-
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -34,6 +32,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname + '/node_modules'));
 
 
+// *** main routes *** //
+app.use('/', routes);
+
 //Inicializar la aplicación:
 init();
 
@@ -42,6 +43,7 @@ init();
 /*app.get('/db/readRecords', function(req,res){
     dbOperations.getRecords(req,res);
 });
+
 app.get('/db/addRecord', function(req,res){
     dbOperations.addRecord(req,res);
 });
@@ -54,6 +56,8 @@ app.get('/db/createTable', function(req,res){
 app.get('/db/dropTable', function(req,res){
     dbOperations.dropTable(req,res);
 });*/
+
+
 
 //Páginas:
 //Inicio
@@ -92,6 +96,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
 
 //Definir Inicialización:
 function init() {
