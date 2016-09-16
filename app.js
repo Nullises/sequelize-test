@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');
 var logFmt = require('logfmt');
 var morgan = require('morgan');
 
-var routes = require('./routes/index');
+var operations = require('./crud/operations');
 
 //Definir puerto:
 var server_port = process.env.PORT || 3000;
@@ -24,7 +24,6 @@ app.set('view engine', 'ejs');
 //Definir middlewares:
 /*app.use(logger('dev'));*/
 
-app.use('/', routes);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
